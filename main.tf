@@ -18,7 +18,7 @@ locals {
   metric_configuration = try(jsondecode(var.metric_configuration), var.metric_configuration)
 }
 
-resource "aws_s3_bucket" "this" {
+resource "aws_s3_bucket2" "this" {
   count = local.create_bucket ? 1 : 0
 
   bucket        = var.bucket
