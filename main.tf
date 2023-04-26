@@ -29,28 +29,6 @@ resource "aws_s3_bucket" "this" {
   tags                = var.tags
 }
 
-resource "aws_s3_bucket2" "this" {
-  count = local.create_bucket ? 1 : 0
-
-  bucket        = var.bucket
-  bucket_prefix = var.bucket_prefix
-
-  force_destroy       = var.force_destroy
-  object_lock_enabled = var.object_lock_enabled
-  tags                = var.tags
-}
-
-resource "aws_s3_bucket3" "this" {
-  count = local.create_bucket ? 1 : 0
-
-  bucket        = var.bucket
-  bucket_prefix = var.bucket_prefix
-
-  force_destroy       = var.force_destroy
-  object_lock_enabled = var.object_lock_enabled
-  tags                = var.tags
-}
-
 resource "aws_s3_bucket_logging" "this" {
   count = local.create_bucket && length(keys(var.logging)) > 0 ? 1 : 0
 
